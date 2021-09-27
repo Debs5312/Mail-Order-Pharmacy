@@ -67,12 +67,12 @@ namespace Drugs.Services
             });
         }
 
-        public async Task<T> GetDispatchableDrugStockAsync<T>(int id, string location, string token)
+        public async Task<T> GetDispatchableDrugStockAsync<T>(int id, string location, bool choice, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.POST,
-                Url = SD.DrugAPIBase + "/api/drugs/" + id.ToString() + "/" +  location,
+                Url = SD.DrugAPIBase + "/api/drugs/" + id.ToString() + "/" +  location + "/" + choice.ToString(),
                 AccessToken = token
             });
         }

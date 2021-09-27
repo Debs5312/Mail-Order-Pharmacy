@@ -97,12 +97,12 @@ namespace Pharmacy.Services.DrugsAPI.Controllers
 
         [Authorize]
         [HttpPost]
-        [Route(("{id}/{Location}"))]
-        public async Task<object> Post(int id, string Location)
+        [Route(("{id}/{Location}/{choice}"))]
+        public async Task<object> Post(int id, string Location, bool choice)
         {
             try
             {
-                DrugDto result = await _drugRepository.GetDrugByID_Location(id, Location);
+                DrugDto result = await _drugRepository.GetDrugByID_Location(id, Location, choice);
                 _response.Result = result;
                 _response.DisplayMessage = "Succesfull";
             }

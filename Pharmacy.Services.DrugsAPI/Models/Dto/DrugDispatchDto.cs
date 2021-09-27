@@ -14,5 +14,6 @@ namespace Pharmacy.Services.DrugsAPI.Models.Dto
         public Drug Drug { get; set; }
         public bool IsDispatched { get; set; }
         public DateTime Time { get; set; }
+        public bool IsPayment { get; set; }
     }
 }

@@ -14,6 +14,6 @@ namespace Pharmacy.Services.DrugsAPI.Repository
         Task<DrugDto> CreateUpdateDrug(DrugDto product);
         Task<bool> DeleteDrug(int Id);
         Task<DrugDto> GetDrugByName(string Name);
-        Task<DrugDto> GetDrugByID_Location(int ID,string Location);
+        Task<DrugDto> GetDrugByID_Location(int ID,string Location,bool choice);
     }
 }

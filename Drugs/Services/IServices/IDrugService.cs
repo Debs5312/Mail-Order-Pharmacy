@@ -14,7 +14,7 @@ namespace Drugs.Services.IServices
         Task<T> UpdateDrugAsync<T>(DrugDto drugDto, string token);
         Task<T> DeleteDrugAsync<T>(int id, string token);
         Task<T> GetDrugByNameAsync<T>(string name, string token);
-        Task<T> GetDispatchableDrugStockAsync<T>(int id, string location, string token);
+        Task<T> GetDispatchableDrugStockAsync<T>(int id, string location, bool choice, string token);
 
     }
 }

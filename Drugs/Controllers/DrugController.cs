@@ -126,8 +126,12 @@ namespace Drugs.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DrugByLoc(int id)
+        public async Task<IActionResult> DrugByLoc(int id,bool choice)
         {
+            List<bool> roles = new List<bool>();
+            roles.Add(true);
+            roles.Add(false);
+            ViewBag.message = roles;
             var accessToken = await HttpContext.GetTokenAsync("access_token");
             var response = await _drugService.GetDrugByIdAsync<ResponseDto>(id, accessToken);
             if (response != null && response.IsSuccess)
@@ -141,10 +145,10 @@ namespace Drugs.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DrugByLoc(DrugDto drugDto)
+        public async Task<IActionResult> DrugByLoc(DrugDto drugDto,bool choice)
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var response = await _drugService.GetDispatchableDrugStockAsync<ResponseDto>(drugDto.Id,drugDto.Location, accessToken);
+            var response = await _drugService.GetDispatchableDrugStockAsync<ResponseDto>(drugDto.Id,drugDto.Location, drugDto.IsPayment, accessToken);
             if (response != null && response.IsSuccess)
             {
                 DrugDto model = JsonConvert.DeserializeObject<DrugDto>(Convert.ToString(response.Result));

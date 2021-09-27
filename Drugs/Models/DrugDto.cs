@@ -21,5 +21,6 @@ namespace Drugs.Models
         public double PricePerPackage { get; set; }
    
         public int UnitInPackage { get; set; }
+        public bool IsPayment { get; set; }
     }
 }

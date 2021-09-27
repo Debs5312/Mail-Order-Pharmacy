@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drugs", "Drugs\Drugs.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pharmacy.Services.Member", "Pharmacy.Services.Member\Pharmacy.Services.Member.csproj", "{3DF8A412-B26C-4357-8A4E-7D0738304867}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pharmacy.Services.DrugsAPI", "Pharmacy.Services.DrugsAPI\Pharmacy.Services.DrugsAPI.csproj", "{465E9EE1-F221-4911-A339-F7110471FAE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pharmacy.Services.DrugsAPI", "Pharmacy.Services.DrugsAPI\Pharmacy.Services.DrugsAPI.csproj", "{465E9EE1-F221-4911-A339-F7110471FAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

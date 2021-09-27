@@ -60,7 +60,7 @@ namespace Pharmacy.Services.DrugsAPI.Repository
             return _mapper.Map<DrugDto>(product);
         }
 
-        public async Task<DrugDto> GetDrugByID_Location(int ID, string Location)
+        public async Task<DrugDto> GetDrugByID_Location(int ID, string Location,bool choice)
         {
             Drug product = await _db.Drugs.Where(x => x.Id == ID && x.Location == Location).FirstOrDefaultAsync();
             DrugDispatch drugDispatch = new DrugDispatch();
@@ -68,6 +68,7 @@ namespace Pharmacy.Services.DrugsAPI.Repository
             drugDispatch.DrugId = product.Id;
             drugDispatch.Time = DateTime.Now;
             drugDispatch.IsDispatched = true;
+            drugDispatch.IsPayment = choice;
 
             _db.DrugDispatches.Add(drugDispatch);
             await _db.SaveChangesAsync();
