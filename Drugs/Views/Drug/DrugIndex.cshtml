@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Drugs.Models.DrugDto>
+
+<br />
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Drugs List</h1>
+        </div>
+        <div class="col text-end pt-2">
+            <a asp-action="DrugCreate" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add New Drug</a>
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Get Drug By Name</h1>
+        </div>
+        <div class="col text-end pt-2">
+            @using (Html.BeginForm("DrugByName", "Drug", FormMethod.Get))
+            {
+                @Html.TextBox("Name")
+                <br />
+                <br />
+                <input type="submit" class="btn btn-info" value="Search" />
+            }
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Find Drug LocationWise</h1>
+        </div>
+        <div class="col text-end pt-2">
+            @using (Html.BeginForm("DrugByLoc", "Drug", FormMethod.Get))
+            {
+                @Html.TextBox("Id")
+                <br />
+                <br />
+                <input type="submit" class="btn btn-info" value="Search" />
+            }
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Manufacturing Date
+                </th>
+                <th>
+                    Expiry Date
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Price PEr Package
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Mfgdate
+                    </td>
+                    <td>
+                        @item.ExpiryDate
+                    </td>
+                    <td>
+                        @item.Location
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @((item.PricePerPackage).ToString("c"))
+                    </td>
+                    <td>
+                        <a asp-action="DrugEdit" class="btn btn-success" asp-route-Id="@item.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a asp-action="DrugDelete" class="btn btn-danger" asp-route-Id="@item.Id">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
