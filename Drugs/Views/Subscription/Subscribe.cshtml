@@ -1,0 +1,69 @@
+﻿@model Drugs.Models.SubscriptionDto
+
+<form asp-action="Subscribe">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">ADD Subscription</h1>
+
+        <hr />
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label asp-for="Drug_ID" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Drug_ID" class="form-control" />
+                <span asp-validation-for="Drug_ID" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Member_Id" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Member_Id" class="form-control" />
+                <span asp-validation-for="Member_Id" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="UserId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Location" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Subscription_Date" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Subscription_Date" class="form-control" />
+                <span asp-validation-for="Subscription_Date" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Refill_Occurrence" class="control-label pt-2" style="font-size:20px;">Refill</label>
+                <select asp-for="Refill_Occurrence" class="form-control" asp-items="@(new SelectList(ViewBag.message))"></select>
+            </div>
+            <div class="col-5 offset-2">
+
+                <a asp-action="GetAllPrescriptions" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="ADD" class="btn btn-success form-control" />
+
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

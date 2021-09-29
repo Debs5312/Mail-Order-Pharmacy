@@ -8,6 +8,7 @@ namespace Drugs
     public class SD
     {
         public static string DrugAPIBase { get; set; }
+        public static string SubscriptionAPIBase { get; set; }
         public enum ApiType
         {
             GET,

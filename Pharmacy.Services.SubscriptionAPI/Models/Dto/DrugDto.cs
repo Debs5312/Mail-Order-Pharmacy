@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Drugs.Models
+namespace Pharmacy.Services.SubscriptionAPI.Models.Dto
 {
     public class DrugDto
     {
@@ -21,6 +21,5 @@ namespace Drugs.Models
         public double PricePerPackage { get; set; }
    
         public int UnitInPackage { get; set; }
-        public bool IsPayment { get; set; } = false;
     }
 }

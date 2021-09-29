@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Pharmacy.Services.SubscriptionAPI.Models;
+using Pharmacy.Services.SubscriptionAPI.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +14,10 @@ namespace Pharmacy.Services.SubscriptionAPI
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                //config.CreateMap<DrugDto, Drug>();
-                //config.CreateMap<Drug, DrugDto>();
-                //config.CreateMap<DrugDispatchDto, DrugDispatch>();
-                //config.CreateMap<DrugDispatch, DrugDispatchDto>();
+                config.CreateMap<DrugDto, Drug>().ReverseMap();
+                config.CreateMap<DrugDispatchDto, DrugDispatch>().ReverseMap();
+                config.CreateMap<PrescriptionDto, Prescription>().ReverseMap();
+                config.CreateMap<SubscriptionDto, Subscription>().ReverseMap();
             });
 
             return mappingConfig;

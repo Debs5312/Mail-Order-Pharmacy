@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Pharmacy.Services.SubscriptionAPI.DbContexts;
+using Pharmacy.Services.SubscriptionAPI.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Pharmacy.Services.SubscriptionAPI
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //services.AddScoped<IDrugRepository, DrugRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
 
             services.AddAuthentication("Bearer")

@@ -1,5 +1,6 @@
 using Drugs.Services;
 using Drugs.Services.IServices;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,11 +27,15 @@ namespace Drugs
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<IDrugService, DrugService>();
+            services.AddHttpClient<ISubscriptionService, SubscriptionService>();
+
             SD.DrugAPIBase = Configuration["ServiceUrls:DrugAPI"];
+            SD.SubscriptionAPIBase = Configuration["ServiceUrls:SubscriptionAPI"];
 
             services.AddScoped<IDrugService, DrugService>();
-            services.AddControllersWithViews();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
 
+            services.AddControllersWithViews();
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
@@ -44,8 +49,8 @@ namespace Drugs
                    options.ClientId = "pharmacy";
                    options.ClientSecret = "secret";
                    options.ResponseType = "code";
-                   //options.ClaimActions.MapJsonKey("role", "role", "role");
-                   //options.ClaimActions.MapJsonKey("sub", "sub", "sub");
+                   options.ClaimActions.MapJsonKey("role", "role", "role");
+                   options.ClaimActions.MapJsonKey("sub", "sub", "sub");
                    options.TokenValidationParameters.NameClaimType = "name";
                    options.TokenValidationParameters.RoleClaimType = "role";
                    options.Scope.Add("mango");

@@ -1,0 +1,123 @@
+﻿@model Drugs.Models.PrescriptionDto
+
+<br />
+<br />
+<br />
+<div class="container p-4 border">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Manufacturing Date
+                </th>
+                <th>
+                    Expiry Date
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Price PEr Package
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @Model.Drug.Id
+                </td>
+                <td>
+                    @Model.Drug.Name
+                </td>
+                <td>
+                    @Model.Drug.Mfgdate
+                </td>
+                <td>
+                    @Model.Drug.ExpiryDate
+                </td>
+                <td>
+                    @Model.Drug.Location
+                </td>
+                <td>
+                    @Model.Drug.Quantity
+                </td>
+                <td>
+                    @((Model.Drug.PricePerPackage).ToString("c"))
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<form asp-action="PrescriptionCreate">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Add A Prescription</h1>
+        <hr />
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label asp-for="UserId" hidden class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="UserId" hidden class="form-control" />
+            </div>
+            <div class="col-2">
+                <label asp-for="Insurance_policy_number" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Insurance_policy_number" class="form-control" />
+                <span asp-validation-for="Insurance_policy_number" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Insurance_Provider" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Insurance_Provider" class="form-control" />
+                <span asp-validation-for="Insurance_Provider" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Prescription_Date" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Prescription_Date" class="form-control" />
+                <span asp-validation-for="Prescription_Date" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Drug_Id" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Drug_Id" readonly="readonly" class="form-control" />
+                <span asp-validation-for="Drug_Id" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Doctor" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Doctor" class="form-control" />
+                <span asp-validation-for="Doctor" class="text-danger"></span>
+            </div>
+            <div class="col-5 offset-2">
+                <a asp-action="DrugById" class="btn-primary btn form-control" asp-route-id="@Model.Drug.Id">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="ADD" class="btn btn-success form-control" />
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>

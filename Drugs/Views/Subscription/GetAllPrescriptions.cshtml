@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Drugs.Models.PrescriptionDto>
+
+<br />
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">New Prescription</h1>
+        </div>
+        <div class="col pt-2">
+            <h2 class="text-primary">ADD a Prescription</h2>
+            <a asp-action="PrescriptionCreate" class="btn btn-success" asp-route-Id="@ViewBag.id">
+                <i class="fas fa-arrow-alt-circle-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Prescription List</h1>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    USER ID
+                </th>
+                <th>
+                    INSURANCE POLICY NO
+                </th>
+                <th>
+                    INSURANCE PROVIDER
+                </th>
+                <th>
+                    PRESCRIPTION DATE
+                </th>
+                <th>
+                    DRUG ID
+                </th>
+                <th>
+                    DOCTOR
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.UserId
+                    </td>
+                    <td>
+                        @item.
+                    </td>
+                    <td>
+                        @item.Insurance_policy_number
+                    </td>
+                    <td>
+                        @item.Insurance_Provider
+                    </td>
+                    <td>
+                        @item.Prescription_Date
+                    </td>
+                    <td>
+                        @item.Drug_Id
+                    </td>
+                    <td>
+                        @item.Doctor
+                    </td>
+                    <td>
+                        <a asp-action="Subscribe" class="btn btn-danger">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

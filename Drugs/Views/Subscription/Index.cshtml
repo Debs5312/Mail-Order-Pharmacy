@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Drugs.Models.SubscriptionDto>
+
+<br />
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">New Subscription</h1>
+            <h2 class="text-primary">Search Your Drug</h2>
+        </div>
+        <div class="col text-end pt-2">
+            @using (Html.BeginForm("DrugById", "Subscription", FormMethod.Get))
+            {
+                @Html.TextBox("Id")
+                <br />
+                <br />
+                <input type="submit" class="btn btn-info" value="Search" />
+            }
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Subscription List</h1>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    USER ID
+                </th>
+                <th>
+                    PRESCRIPTION ID
+                </th>
+                <th>
+                    DRUG ID
+                </th>
+                <th>
+                    DRUG NAME
+                </th>
+                <th>
+                    LOCATION
+                </th>
+                <th>
+                    SUBSCRIPTION DATE
+                </th>
+                <th>
+                    REFIL OCCURENCE
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.UserId
+                </td>
+                <td>
+                    @item.Member_Id
+                </td>
+                <td>
+                    @item.Drug_ID
+                </td>
+                <td>
+                    @item.Drug.Name
+                </td>
+                <td>
+                    @item.Location
+                </td>
+                <td>
+                    @item.Subscription_Date
+                </td>
+                <td>
+                    @item.Refill_Occurrence
+                </td>
+                <td>
+                    <a asp-action="" class="btn btn-danger" asp-route-Id="">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
