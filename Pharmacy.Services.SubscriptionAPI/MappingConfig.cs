@@ -14,8 +14,6 @@ namespace Pharmacy.Services.SubscriptionAPI
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<DrugDto, Drug>().ReverseMap();
-                config.CreateMap<DrugDispatchDto, DrugDispatch>().ReverseMap();
                 config.CreateMap<PrescriptionDto, Prescription>().ReverseMap();
                 config.CreateMap<SubscriptionDto, Subscription>().ReverseMap();
             });

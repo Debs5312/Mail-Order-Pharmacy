@@ -15,7 +15,5 @@ namespace Pharmacy.Services.SubscriptionAPI.DbContexts
         }
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
-        public DbSet<DrugDispatch> DrugDispatches { get; set; }
-        public DbSet<Drug> Drugs { get; internal set; }
     }
 }

@@ -75,9 +75,7 @@
                         @item.Doctor
                     </td>
                     <td>
-                        <a asp-action="Subscribe" class="btn btn-danger">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                        @Html.ActionLink("Subscribe", "Subscribe", "Subscription", item)
                     </td>
                 </tr>
             }

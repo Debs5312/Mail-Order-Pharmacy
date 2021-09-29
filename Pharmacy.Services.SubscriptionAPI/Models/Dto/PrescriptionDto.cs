@@ -14,8 +14,6 @@ namespace Pharmacy.Services.SubscriptionAPI.Models.Dto
         public string Insurance_Provider { get; set; }
         public DateTime Prescription_Date { get; set; }
         public int DrugId { get; set; }
-        [ForeignKey("Drug_Id")]
-        public virtual Drug Drug { get; set; }
         public string Doctor { get; set; }
     }
 }

@@ -61,7 +61,6 @@ namespace Drugs.Controllers
             var response = await _drugService.GetDrugByIdAsync<ResponseDto>(id, accessToken);
             DrugDto model = JsonConvert.DeserializeObject<DrugDto>(Convert.ToString(response.Result));
             PrescriptionDto prescriptionDto = new PrescriptionDto();
-            prescriptionDto.Drug = model;
             prescriptionDto.Drug_Id = model.Id;
             prescriptionDto.UserId = userId;
                 //var response = await _subscriptionService.AddPrescriptionAsync<ResponseDto>(prescriptionDto, accessToken);
@@ -132,19 +131,16 @@ namespace Drugs.Controllers
             ViewBag.message = roles;
             var accessToken = await HttpContext.GetTokenAsync("access_token");
             SubscriptionDto subscriptionDto = new SubscriptionDto();
+            var response = await _drugService.GetDrugByIdAsync<ResponseDto>(prescriptionDto.Drug_Id, accessToken);
+            DrugDto model = JsonConvert.DeserializeObject<DrugDto>(Convert.ToString(response.Result));
             subscriptionDto.UserId = prescriptionDto.UserId;
-            subscriptionDto.Drug = prescriptionDto.Drug;
             subscriptionDto.Drug_ID = prescriptionDto.Drug_Id;
-            subscriptionDto.Prescription = prescriptionDto;
-            subscriptionDto.Member_Id = prescriptionDto.Id;
-            subscriptionDto.Location = prescriptionDto.Drug.Location;
+            subscriptionDto.Prescription_Id = prescriptionDto.Id;
+            subscriptionDto.Location = model.Location;
             subscriptionDto.Subscription_Date = DateTime.Now;
             //var response = await _subscriptionService.AddPrescriptionAsync<ResponseDto>(prescriptionDto, accessToken);
-            if (subscriptionDto.Drug != null && subscriptionDto.Prescription != null)
-            {
-                return View(subscriptionDto);
-            }
-            return NotFound();
+            return (subscriptionDto.Drug_ID > 0 && subscriptionDto.Prescription_Id > 0) ? View(subscriptionDto) : NotFound();
+
         }
 
         [HttpPost]

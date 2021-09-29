@@ -3,7 +3,7 @@
 <br />
 <br />
 <br />
-<div class="container p-4 border">
+@*<div class="container p-4 border">
     <table class="table">
         <thead>
             <tr>
@@ -58,7 +58,7 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div>*@
 
 <form asp-action="PrescriptionCreate">
     <br />
@@ -109,7 +109,7 @@
                 <span asp-validation-for="Doctor" class="text-danger"></span>
             </div>
             <div class="col-5 offset-2">
-                <a asp-action="DrugById" class="btn-primary btn form-control" asp-route-id="@Model.Drug.Id">Back to List</a>
+                <a asp-action="DrugById" class="btn-primary btn form-control" asp-route-id="@Model.Drug_Id">Back to List</a>
             </div>
             <div class="col-5">
                 <input type="submit" value="ADD" class="btn btn-success form-control" />

@@ -20,8 +20,6 @@ namespace Pharmacy.Services.SubscriptionAPI.Models
         [Required]
         public DateTime Prescription_Date { get; set; }
         public int DrugId { get; set; }
-        [ForeignKey("Drug_Id")]
-        public Drug Drug { get; set; }
         public string Doctor { get; set; }
 
     }

@@ -13,9 +13,7 @@ namespace Pharmacy.Services.SubscriptionAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string UserId { get; set; }
-        public int? Prescription_Id { get; set; }
-        [ForeignKey("Prescription_Id")]
-        public Prescription Prescription { get; set; }
+        public int Prescription_Id { get; set; }
         [Required]
         public int Drug_ID { get; set; }
         [Required]
