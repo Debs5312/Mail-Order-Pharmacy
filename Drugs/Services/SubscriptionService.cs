@@ -36,21 +36,23 @@ namespace Drugs.Services
                 AccessToken = token
             });
         }
-        public async Task<T> AddPrescriptionAsync<T>(PrescriptionDto prescriptionDto, string token = null)
+        public async Task<T> AddPrescriptionAsync<T>(PrescriptionDto prescriptionDto, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.POST,
+                Data = prescriptionDto,
                 Url = SD.SubscriptionAPIBase + "/api/subscription",
                 AccessToken = token
             });
         }
 
-        public async Task<T> AddSubsscriptionAsync<T>(SubscriptionDto subscriptionDto, string token = null)
+        public async Task<T> AddSubsscriptionAsync<T>(SubscriptionDto subscriptionDto, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.POST,
+                Data = subscriptionDto,
                 Url = SD.SubscriptionAPIBase + "/api/subscription/subscribe",
                 AccessToken = token
             });

@@ -9,8 +9,8 @@ namespace Pharmacy.Services.SubscriptionAPI.Models.Dto
     public class PrescriptionDto
     {
         public int Id { get; set; }
-        public int Insurance_policy_number { get; set; }
         public string UserId { get; set; }
+        public int Insurance_policy_number { get; set; }
         public string Insurance_Provider { get; set; }
         public DateTime Prescription_Date { get; set; }
         public int DrugId { get; set; }

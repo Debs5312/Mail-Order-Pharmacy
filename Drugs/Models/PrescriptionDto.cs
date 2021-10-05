@@ -8,7 +8,7 @@ namespace Drugs.Models
 {
     public class PrescriptionDto
     {
-        public int Id { get; set; }
+        public int Id { get; private set; } = 0;
         public string UserId { get; set; }
         public int Insurance_policy_number { get; set; }
         public string Insurance_Provider { get; set; }
