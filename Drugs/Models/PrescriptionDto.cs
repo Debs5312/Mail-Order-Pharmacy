@@ -13,7 +13,7 @@ namespace Drugs.Models
         public int Insurance_policy_number { get; set; }
         public string Insurance_Provider { get; set; }
         public DateTime Prescription_Date { get; set; }
-        public int Drug_Id { get; set; }
+        public int DrugId { get; set; }
         //[ForeignKey("Drug_Id")]
         //public virtual DrugDto Drug { get; set; }
         public string Doctor { get; set; }

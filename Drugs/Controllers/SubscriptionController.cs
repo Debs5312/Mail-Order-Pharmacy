@@ -61,7 +61,7 @@ namespace Drugs.Controllers
             var response = await _drugService.GetDrugByIdAsync<ResponseDto>(id, accessToken);
             DrugDto model = JsonConvert.DeserializeObject<DrugDto>(Convert.ToString(response.Result));
             PrescriptionDto prescriptionDto = new PrescriptionDto();
-            prescriptionDto.Drug_Id = model.Id;
+            prescriptionDto.DrugId = model.Id;
             prescriptionDto.UserId = userId;
                 //var response = await _subscriptionService.AddPrescriptionAsync<ResponseDto>(prescriptionDto, accessToken);
             if (response != null && response.IsSuccess)
@@ -131,10 +131,10 @@ namespace Drugs.Controllers
             ViewBag.message = roles;
             var accessToken = await HttpContext.GetTokenAsync("access_token");
             SubscriptionDto subscriptionDto = new SubscriptionDto();
-            var response = await _drugService.GetDrugByIdAsync<ResponseDto>(prescriptionDto.Drug_Id, accessToken);
+            var response = await _drugService.GetDrugByIdAsync<ResponseDto>(prescriptionDto.DrugId, accessToken);
             DrugDto model = JsonConvert.DeserializeObject<DrugDto>(Convert.ToString(response.Result));
             subscriptionDto.UserId = prescriptionDto.UserId;
-            subscriptionDto.Drug_ID = prescriptionDto.Drug_Id;
+            subscriptionDto.Drug_ID = prescriptionDto.DrugId;
             subscriptionDto.Prescription_Id = prescriptionDto.Id;
             subscriptionDto.Location = model.Location;
             subscriptionDto.Subscription_Date = DateTime.Now;
