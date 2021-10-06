@@ -9,6 +9,12 @@
         <div class="row">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-2">
+                <label asp-for="Id" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Id" type="number" value="0" readonly="readonly" class="form-control" />
+            </div>
+            <div class="col-2">
                 <label asp-for="Drug_ID" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-3">
@@ -43,9 +49,10 @@
                 <input asp-for="Subscription_Date" readonly="readonly" class="form-control" />
                 <span asp-validation-for="Subscription_Date" class="text-danger"></span>
             </div>
-
             <div class="col-2">
                 <label asp-for="Refill_Occurrence" class="control-label pt-2" style="font-size:20px;">Refill</label>
+            </div>
+            <div class="col-5 pb-3">
                 <select asp-for="Refill_Occurrence" class="form-control" asp-items="@(new SelectList(ViewBag.message))"></select>
             </div>
             <div class="col-5 offset-2">

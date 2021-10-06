@@ -119,6 +119,7 @@ namespace Drugs.Controllers
         //}
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Subscribe(PrescriptionDto prescriptionDto)
         {
             
