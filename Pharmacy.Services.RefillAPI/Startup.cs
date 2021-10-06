@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Pharmacy.Services.RefillAPI.Repository;
 using Pharmacy.Services.SubscriptionAPI;
 using Pharmacy.Services.SubscriptionAPI.DbContexts;
 using System;
@@ -37,7 +38,7 @@ namespace Pharmacy.Services.RefillAPI
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
             services.AddSingleton(mapper);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<IRefillRepository, RefillRepository>();
 
 
             services.AddAuthentication("Bearer")
