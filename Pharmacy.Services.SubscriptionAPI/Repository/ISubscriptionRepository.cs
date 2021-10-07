@@ -15,6 +15,7 @@ namespace Pharmacy.Services.SubscriptionAPI.Repository
         Task<IEnumerable<PrescriptionDto>> GetAllPrescription(string id);
 
         Task<IEnumerable<SubscriptionDto>> GetAllSubscription(string id);
+        Task<SubscriptionDto> GetSubscriptionByID(int id);
         //Task<SubscriptionDto> Unsubscribe(DrugDispatchDto drugDispatchDto, int Id);
     }
 }

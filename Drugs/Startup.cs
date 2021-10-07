@@ -28,12 +28,15 @@ namespace Drugs
         {
             services.AddHttpClient<IDrugService, DrugService>();
             services.AddHttpClient<ISubscriptionService, SubscriptionService>();
+            services.AddHttpClient<IRefillService, RefillService>();
 
             SD.DrugAPIBase = Configuration["ServiceUrls:DrugAPI"];
             SD.SubscriptionAPIBase = Configuration["ServiceUrls:SubscriptionAPI"];
+            SD.RefillAPIBase = Configuration["ServiceUrls:RefillAPI"];
 
             services.AddScoped<IDrugService, DrugService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<IRefillService, RefillService>();
 
             services.AddControllersWithViews();
             services.AddAuthentication(options =>
@@ -69,7 +72,6 @@ namespace Drugs
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();

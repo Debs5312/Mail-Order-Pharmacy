@@ -25,6 +25,12 @@ namespace Pharmacy.Services.SubscriptionAPI.Repository
         //    return _mapper.Map<DrugDto>(product);
         //}
 
+        public async Task<SubscriptionDto> GetSubscriptionByID(int id)
+        {
+            Subscription subs = await _db.Subscriptions.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<SubscriptionDto>(subs);
+        }
+
         public async Task<IEnumerable<SubscriptionDto>> GetAllSubscription(string id)
         {
             List<Subscription> subsList = await _db.Subscriptions.Where(x => x.UserId == id).ToListAsync();

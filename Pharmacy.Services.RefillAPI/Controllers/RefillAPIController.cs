@@ -20,7 +20,7 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             _refillRepository = refillRepository;
             this._response = new ResponseDto();
         }
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         [Route("refillst/{id}")]
         public async Task<object> Get(string id)
@@ -39,7 +39,27 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             return _response;
         }
 
-        //[Authorize]
+        [Authorize]
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<object> Get(int id, int k = 0)
+        {
+            try
+            {
+                IEnumerable<RefillStatusDto> subDtos = await _refillRepository.RefillStatusBySubsID(id);
+                _response.Result = subDtos;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages
+                     = new List<string>() { ex.ToString() };
+            }
+            return _response;
+
+        }
+
+        [Authorize]
         [HttpGet]
         [Route("refillst/single/{id}")]
         public async Task<object> Get(int id)
@@ -57,7 +77,8 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             }
             return _response;
         }
-        //[Authorize]
+
+        [Authorize]
         [HttpPost]
         [Route("adhocRefill")]
         public async Task<object> Post([FromBody] AdhokRefillDto adhokRefillDto)
@@ -76,7 +97,7 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             return _response;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [Route("refillstatus")]
         public async Task<object> Post([FromBody] RefillStatusDto refillStatusDto)
@@ -95,6 +116,7 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             return _response;
         }
 
+        [Authorize]
         [HttpPut]
         [Route("refillstatus")]
         public async Task<object> Put([FromBody] RefillStatusDto refillStatusDto)
@@ -113,7 +135,7 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             return _response;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete]
         [Route("deleteAdhoc/{id}")]
         public async Task<object> Delete(int id)
@@ -132,10 +154,10 @@ namespace Pharmacy.Services.RefillAPI.Controllers
             return _response;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete]
-        [Route("deleteRefill/{id}/{xyz?}")]
-        public async Task<object> Delete(int id,string xyz)
+        [Route("{id}")]
+        public async Task<object> Delete(int id,int ID = 0)
         {
             try
             {

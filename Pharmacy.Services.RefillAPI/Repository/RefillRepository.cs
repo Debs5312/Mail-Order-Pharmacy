@@ -43,11 +43,13 @@ namespace Pharmacy.Services.RefillAPI.Repository
             try
             {
                 RefillStatus refillStatus = await _db.RefillStatuses.FirstOrDefaultAsync(u => u.Id == id);
-                if (refillStatus == null)
+                AdhokRefill refillStatus1 = await _db.AdhokRefills.FirstOrDefaultAsync(u => u.Id == refillStatus.AdhocRefillId);
+                if (refillStatus == null || refillStatus1 == null)
                 {
                     return false;
                 }
                 _db.RefillStatuses.Remove(refillStatus);
+                _db.AdhokRefills.Remove(refillStatus1);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -70,6 +72,12 @@ namespace Pharmacy.Services.RefillAPI.Repository
             _db.AdhokRefills.Add(adhokRefill);
             await _db.SaveChangesAsync();
             return _mapper.Map<AdhokRefill, AdhokRefillDto>(adhokRefill);
+        }
+
+        public async Task<IEnumerable<RefillStatusDto>> RefillStatusBySubsID(int subsID)
+        {
+            List<RefillStatus> subsList = await _db.RefillStatuses.Where(x => x.Subscription_ID == subsID).ToListAsync();
+            return _mapper.Map<List<RefillStatusDto>>(subsList);
         }
 
         public async Task<RefillStatusDto> RefillStatusById(int id)

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Pharmacy.Services.RefillAPI.Models.Dto
+namespace Drugs.Models
 {
     public class RefillStatusDto
     {
-        public int Id { get; set; }
+        public int Id { get; set; } = 0;
         public int AdhocRefillId { get; set; }
         public string UserId { get; set; }
         public int Subscription_ID { get; set; }
@@ -16,6 +16,6 @@ namespace Pharmacy.Services.RefillAPI.Models.Dto
         public int Quantity { get; set; }
         public DateTime Start_Date { get; set; }
         public DateTime End_Date { get; set; }
-        public bool PaymentStatus { get; set; }
+        public bool PaymentStatus { get; set; } = false;
     }
 }

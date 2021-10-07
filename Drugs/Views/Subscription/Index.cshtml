@@ -64,8 +64,8 @@
                     @item.Refill_Occurrence
                 </td>
                 <td>
-                    <a asp-action="" class="btn btn-danger" asp-route-Id="">
-                        <i class="fas fa-edit"></i>
+                    <a asp-action="AdhocRefillCreate" class="btn btn-danger" asp-controller="Refill" asp-route-Id="@item.Id">
+                        Refill Order
                     </a>
                 </td>
             </tr>

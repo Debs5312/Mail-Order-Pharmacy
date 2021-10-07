@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Drugs.Models.RefillStatusDto>
+
+    <br />
+    <br />
+    <div class="container p-4 border">
+        @if (Model == null)
+        {
+            <div class="row pb-2">
+                <div class="col">
+                    <h1 class="text-primary">You have no Refill Order</h1>
+                </div>
+                <div class="col text-end pt-2">
+                    <a asp-controller="Subscription" class="btn btn-light"
+                       asp-action="Index">Select a Existing Subscription or Create a New Subscription</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row pb-2">
+                <div class="col">
+                    <h1 class="text-primary">Refill Subscription List</h1>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            SUBSCRIPTION ID
+                        </th>
+                        <th>
+                            DRUG NAME
+                        </th>
+                        <th>
+                            LOCATION
+                        </th>
+                        <th>
+                            QUANTITY
+                        </th>
+                        <th>
+                            REFILL ORDER DATE
+                        </th>
+                        <th>
+                            REFILL DUE DATE
+                        </th>
+                        <th>
+                            PAYMENT STATUS
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @item.Subscription_ID
+                        </td>
+                        <td>
+                            @item.DrugName
+                        </td>
+                        <td>
+                            @item.Location
+                        </td>
+                        <td>
+                            @item.Start_Date
+                        </td>
+                        <td>
+                            @item.End_Date
+                        </td>
+                        @if (item.PaymentStatus)
+                        {
+                            <td>
+                                Paid
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Not Paid
+                            </td>
+                        }
+                    <td>
+                        <a asp-action="EditRefillStatus" class="btn btn-success" asp-route-Id="@item.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a asp-action="DeleteRefillStatus" class="btn btn-danger" asp-route-Id="@item.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            
+        }
+
+    </div>

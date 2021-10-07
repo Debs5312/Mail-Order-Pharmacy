@@ -13,5 +13,6 @@ namespace Drugs.Services.IServices
         Task<T> AddSubsscriptionAsync<T>(SubscriptionDto subscriptionDto, string token = null);
         Task<T> GetPrescriptionsByIdAsync<T>(string id, string token);
         Task<T> GetSubscriptionByIdAsync<T>(string id, string token);
+        Task<T> GetSubscriptionIdAsync<T>(int id, string token);
     }
 }

@@ -16,6 +16,7 @@ namespace Pharmacy.Services.RefillAPI.Models
         public int AdhocRefillId { get; set; }
         [Required]
         public string UserId { get; set; }
+        public int Subscription_ID { get; set; }
         public string DrugName { get; set; }
         public string Location { get; set; }
         public int Quantity { get; set; }

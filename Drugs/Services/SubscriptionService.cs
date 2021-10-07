@@ -27,6 +27,16 @@ namespace Drugs.Services
             });
         }
 
+        public async Task<T> GetSubscriptionIdAsync<T>(int id, string token)
+        {
+            return await this.SendAsync<T>(new ApiRequest()
+            {
+                ApiType = SD.ApiType.GET,
+                Url = SD.SubscriptionAPIBase + "/api/subscription/" + id,
+                AccessToken = token
+            });
+        }
+
         public async Task<T> GetSubscriptionByIdAsync<T>(string id, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()

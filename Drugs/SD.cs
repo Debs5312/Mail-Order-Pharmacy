@@ -9,6 +9,7 @@ namespace Drugs
     {
         public static string DrugAPIBase { get; set; }
         public static string SubscriptionAPIBase { get; set; }
+        public static string RefillAPIBase { get; set; }
         public enum ApiType
         {
             GET,

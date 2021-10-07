@@ -42,6 +42,25 @@ namespace Pharmacy.Services.SubscriptionAPI.Controllers
 
         [Authorize]
         [HttpGet]
+        [Route("{id}")]
+        public async Task<object> Get(int id)
+        {
+            try
+            {
+                SubscriptionDto subDtos = await _subscriptionRepository.GetSubscriptionByID(id);
+                _response.Result = subDtos;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages
+                     = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
+
+        [Authorize]
+        [HttpGet]
         [Route("{id}/{xyz?}")]
         public async Task<object> Get(string id,string xyz)
         {

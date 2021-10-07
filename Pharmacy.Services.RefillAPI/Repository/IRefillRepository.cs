@@ -13,6 +13,7 @@ namespace Pharmacy.Services.RefillAPI.Repository
         Task<bool> DeleteRefill(int id);
         //Task<DrugDto> GetDrugsById(int id);
         Task<RefillStatusDto> RefillStatusById(int id);
+        Task<IEnumerable<RefillStatusDto>> RefillStatusBySubsID(int subsID);
         Task<IEnumerable<RefillStatusDto>> GetAllRefillStatus(string id);
         Task<RefillStatusDto> UpsertRefillStatus(RefillStatusDto refillStatusDto);
     }
